@@ -1,0 +1,21 @@
+table {
+  border: solid;
+}
+img:hover {
+  border:solid;
+  color:teal;
+}
+#title {
+  font-family: cursive;
+  font-size: 34px;
+  color:#"efefef";}}
+}
+p.one {
+  color:teal;
+  font-family:cursive;}
+a:hover {
+  color: #cc0000;
+  font-weight: bold;
+  text-decoration: none;
+}
+

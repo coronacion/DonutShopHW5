@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Donut Shop</title>
+    <link rel="stylesheet" type="text/css" href="donutshophw5.css">
+  </head>
+  <body>
+
+    <h1 id="title"> The Wonderful World of Donuts </h1>
+
+      <p> Welcome to the Donut Diet. This diet consists of sugar, sprinkles, jelly. Assorted, half dozen and a dozen. When you eat one a day, keeps the grumbles away. Donut, it does a body good!</p>
+
+      <a href="https://www.thrillist.com/eat/nation/best-donuts-in-america-best-donut-shops-in-america"><img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGGKjpYcP9ITW9THG3jaaEdaBHddpg4v4KG5Tib0ASsai6ltOCfw"/>
+
+      <li><a href = "https://www.thrillist.com/eat/nation/best-donut-shops-in-america">The Best Donut Shop in America</a></li>
+
+      <li><a href = "http://www.rachaelraymag.com/recipes/dessert-recipes/doughnut-hole-recipes"/>Best Donut Hole Recipes</a></li>
+
+
+
+    <table border="2" bgcolor=#"efefef">
+      <thead>
+      <th>Donut Shop</th>
+      <th>Donuts Baked per Hour</th>
+      <th>Donuts Baked per Day</th>
+      </thead>
+
+      <script>
+function DonutShop(numHoursOpen, minCustPerHour, maxCustPerHour, avgDonutsPerCust, location) {
+          this.numHoursOpen = numHoursOpen;
+          this.minCustPerHour = minCustPerHour;
+          this.maxCustPerHour = maxCustPerHour;
+          this.avgDonutsPerCust = avgDonutsPerCust;
+          this.storeLocation = location;
+
+          this.getDonutsPerHour = function () {
+              var custPerHour =  Math.floor(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour;
+            return Math.ceil(this.avgDonutsPerCust * custPerHour);
+          };
+
+          this.getDonutsBakedPerDay = function ()  {
+            return Math.ceil(this.getDonutsPerHour() * this.numHoursOpen);
+          };
+
+            this.report = function() {
+            return "<tr><td>" + this.storeLocation +
+            "</td><td>" + this.getDonutsPerHour() +
+            "</td><td>" + this.getDonutsBakedPerDay() +
+            "</td><tr>";
+            };
+        }
+        var DonutMaster = function() {
+          this.donutList = [];
+          this.addShop = function (shop) {
+            this.donutList.push(shop);
+          };
+          this.generateReport = function () {
+            for (var i = 0; i < this.donutList.length; i++) {
+              console.log("location " + this.donutList[i].storeLocation + " donuts per hour " +
+               this.donutList[i].getDonutsPerHour() + " donuts per day " + this.donutList[i].getDonutsBakedPerDay());
+            }
+          };
+
+        };
+
+
+
+        var downtown = new DonutShop(8,8,43,4.50, "Downtown");
+        var capitolHill = new DonutShop(8, 4, 37, 2,"Capitol Hill");
+        var southLakeUnion = new DonutShop(8, 9, 23, 6.33, "South Lake Union");
+        var wedgewood = new DonutShop(8, 2, 28, 1.25 ,"Wedgewood");
+        var ballard = new DonutShop(8, 8, 58, 3.75 ,"Ballard");
+        var edmonds = new DonutShop(8, 8, 58, 3.75 ,"Edmonds");
+        var franchise = new DonutMaster();
+
+        franchise.addShop(downtown);
+        franchise.addShop(capitolHill);
+        franchise.addShop(southLakeUnion);
+        franchise.addShop(wedgewood);
+        franchise.addShop(ballard);
+        franchise.addShop(edmonds);
+        franchise.generateReport();
+
+
+
+        document.write(downtown.report());
+        document.write(capitolHill.report());
+        document.write(southLakeUnion.report());
+        document.write(wedgewood.report());
+        document.write(ballard.report());
+        document.write(edmonds.report());
+
+
+      </script>
+    </table>
+    <p class="one">created by:Gerry Anne Coronacion</p>
+  </body>
+</html>
